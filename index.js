@@ -4,11 +4,15 @@ let playerSelection = "";
 let computerSelection = getComputerChoice();
 const choices = ["rock", "paper", "scissors"];
 
+// ↓ RANDOMIZE COMPUTER CHOICE ↓
+
 function getComputerChoice(computerSelection) {
   const choices = ["rock", "paper", "scissors"];
   let numberPicker = Math.floor(Math.random() * choices.length);
   return choices[numberPicker];
 }
+
+// ↓ ROUND RESULTS ↓
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection.toLowerCase() === computerSelection) {
@@ -65,11 +69,15 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+// ↓ LETS THE GAME GO 5 ROUNDS ↓
+
 for (let i = 1; i <= 5; i++) {
   playerSelection = prompt(
     `Round ${i}, Choose. Rock, Paper or Scissors?`
   ).toLowerCase();
 
+
+  // ↓ VALIDATES INPUT ↓
   if (
     playerSelection.toLowerCase() != "rock" &&
     playerSelection.toLowerCase() != "paper" &&
@@ -79,7 +87,11 @@ for (let i = 1; i <= 5; i++) {
     i--;
   }
 
+  // ↓ CALLS playRound FUNCTION ↓
+
   playRound(playerSelection, computerSelection);
+
+  // ↓ REPORTS FINAL RESULTS ↓
 
   if (i === 5 && computerScore == playerScore) {
     console.log(`Game over! You tied.`);

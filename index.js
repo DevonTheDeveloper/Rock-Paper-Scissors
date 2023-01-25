@@ -2,9 +2,10 @@ let computerScore = 0;
 let playerScore = 0;
 let playerSelection = "";
 let computerSelection = getComputerChoice();
+const choices = ['rock', 'paper', 'scissors'];
 
 function getComputerChoice(computerSelection) {
-  const choices = ["rock", "paper", "scissors"];
+  const choices = ['rock', 'paper', 'scissors'];
   let numberPicker = Math.floor(Math.random() * choices.length);
   return choices[numberPicker];
 }
@@ -68,5 +69,22 @@ for (let i = 1; i <= 5; i++) {
   playerSelection = prompt(
     `Round ${i}, Choose. Rock, Paper or Scissors?`
   ).toLowerCase();
+
   playRound(playerSelection, computerSelection);
+
+
+  if (i === 5 && computerScore == playerScore) {
+    console.log(`Game over! You tied.`)
+  }
+
+  if (i === 5 && computerScore > playerScore) {
+    console.log(`Game over! You lost.`)
+  }
+
+  if (i === 5 && playerScore > computerScore) {
+    console.log(`Game over! You won!`)
+  }
+
+
 }
+

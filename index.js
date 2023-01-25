@@ -2,10 +2,10 @@ let computerScore = 0;
 let playerScore = 0;
 let playerSelection = "";
 let computerSelection = getComputerChoice();
-const choices = ['rock', 'paper', 'scissors'];
+const choices = ["rock", "paper", "scissors"];
 
 function getComputerChoice(computerSelection) {
-  const choices = ['rock', 'paper', 'scissors'];
+  const choices = ["rock", "paper", "scissors"];
   let numberPicker = Math.floor(Math.random() * choices.length);
   return choices[numberPicker];
 }
@@ -70,21 +70,26 @@ for (let i = 1; i <= 5; i++) {
     `Round ${i}, Choose. Rock, Paper or Scissors?`
   ).toLowerCase();
 
+  if (
+    playerSelection.toLowerCase() != "rock" &&
+    playerSelection.toLowerCase() != "paper" &&
+    playerSelection.toLowerCase() != "scissors"
+  ) {
+    console.log(`${playerSelection} is not a choice.`);
+    i--;
+  }
+
   playRound(playerSelection, computerSelection);
 
-
   if (i === 5 && computerScore == playerScore) {
-    console.log(`Game over! You tied.`)
+    console.log(`Game over! You tied.`);
   }
 
   if (i === 5 && computerScore > playerScore) {
-    console.log(`Game over! You lost.`)
+    console.log(`Game over! You lost.`);
   }
 
   if (i === 5 && playerScore > computerScore) {
-    console.log(`Game over! You won!`)
+    console.log(`Game over! You won!`);
   }
-
-
 }
-

@@ -11,24 +11,24 @@ function getComputerChoice(computerSelection){
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        console.log('You tied, you both chose ' + playerSelection + '\nComputer Score: ' + computerScore + ' Your Score: ' + playerScore);
+    if (playerSelection.toLowerCase() === computerSelection) {
+        console.log('You tied, you both chose ' + computerSelection + '\nComputer Score: ' + computerScore + ' Your Score: ' + playerScore);
     }
     
     if (
-        playerSelection === 'rock' && computerSelection === 'scissors' ||
-        playerSelection === 'paper' && computerSelection === 'rock' ||
-        playerSelection === 'scissors' && computerSelection === 'paper') {
+        playerSelection.toLowerCase() === 'rock' && computerSelection === 'scissors' ||
+        playerSelection.toLowerCase() === 'paper' && computerSelection === 'rock' ||
+        playerSelection.toLowerCase() === 'scissors' && computerSelection === 'paper') {
         playerScore++
-        console.log('You won the round! ' + playerSelection + ' beats ' + computerSelection + '\nComputer Score: ' + computerScore + ' Your Score: ' + playerScore)
+        console.log('You won the round! ' + playerSelection.toLowerCase() + ' beats ' + computerSelection + '\nComputer Score: ' + computerScore + ' Your Score: ' + playerScore)
     }
 
     if (
-        computerSelection === 'rock' && playerSelection === 'scissors' ||
-        computerSelection === 'paper' && playerSelection === 'rock' ||
-        computerSelection === 'scissors' && playerSelection === 'paper') {
+        computerSelection === 'rock' && playerSelection.toLowerCase() === 'scissors' ||
+        computerSelection === 'paper' && playerSelection.toLowerCase() === 'rock' ||
+        computerSelection === 'scissors' && playerSelection.toLowerCase() === 'paper') {
         computerScore++
-        console.log('You lost the round. ' + computerSelection + ' beats ' + playerSelection + '\nComputer Score: ' + computerScore + ' Your Score: ' + playerScore )
+        console.log('You lost the round. ' + computerSelection + ' beats ' + playerSelection.toLowerCase() + '\nComputer Score: ' + computerScore + ' Your Score: ' + playerScore )
     }
 
 }

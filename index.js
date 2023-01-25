@@ -1,8 +1,8 @@
 let computerScore = 0;
 let playerScore = 0;
-let roundsPlayed = 0;
 const playerSelection = prompt(`Rock, Paper or Scissors?`)
 const computerSelection = getComputerChoice()
+
 
 function getComputerChoice(computerSelection){
     const choices = ['rock', 'paper', 'scissors'];
@@ -33,17 +33,3 @@ function playRound(playerSelection, computerSelection) {
 
 }
 console.log(playRound(playerSelection, computerSelection));
-
-function game() {
-    for (let i = 0; i < 5; i++) {
-        playerSelection = prompt(`Round ${i}, Rock, Paper or Scissors?`);
-        
-        if (playerSelection.toLowerCase !== 'rock' && playerSelection.toLowerCase !== 'scissors' && playerSelection.toLowerCase !== 'scissors' ) {
-            console.log(`${playerSelection} is not a valid choice.`)
-        }
-
-        return playRound;
-    }
-}
-
-game();

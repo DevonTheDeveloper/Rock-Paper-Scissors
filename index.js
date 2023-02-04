@@ -1,8 +1,25 @@
+const container = document.querySelector("#container");
+const title = document.createElement("h1");
+const rockButton = document.createElement("button", "#rock");
+const paperButton = document.createElement("button", "#paper");
+const scissorsButton = document.createElement("button", "#scissors");
+
 let computerScore = 0;
 let playerScore = 0;
 let playerSelection = "";
 let computerSelection = getComputerChoice();
 const choices = ["rock", "paper", "scissors"];
+
+rockButton.textContent = "ROCK";
+rockButton.setAttribute("id", "rock");
+paperButton.textContent = "PAPER";
+paperButton.setAttribute("id", "paper");
+scissorsButton.textContent = "SCISSORS";
+scissorsButton.setAttribute("id", "scissors");
+
+container.appendChild(rockButton);
+container.appendChild(paperButton);
+container.appendChild(scissorsButton);
 
 // ↓ RANDOMIZE COMPUTER CHOICE ↓
 
@@ -71,37 +88,42 @@ function playRound(playerSelection, computerSelection) {
 
 // ↓ LETS THE GAME GO 5 ROUNDS ↓
 
-for (let i = 1; i <= 5; i++) {
-  playerSelection = prompt(
-    `Round ${i}, Choose. Rock, Paper or Scissors?`
-  ).toLowerCase();
+// for (let i = 1; i <= 5; i++) {
+//   playerSelection = prompt(
+//     `Round ${i}, Choose. Rock, Paper or Scissors?`
+//   ).toLowerCase();
 
+// ↓ REPORTS FINAL RESULTS ↓
 
-  // ↓ VALIDATES INPUT ↓
+//   if (i === 5 && computerScore == playerScore) {
+//     console.log(`Game over! You tied.`);
+//   }
+
+//   if (i === 5 && computerScore > playerScore) {
+//     console.log(`Game over! You lost.`);
+//   }
+
+//   if (i === 5 && playerScore > computerScore) {
+//     console.log(`Game over! You won!`);
+//   }
+// }
+
+// User Interface (UI)
+container.addEventListener("click", function (event) {
   if (
-    playerSelection.toLowerCase() != "rock" &&
-    playerSelection.toLowerCase() != "paper" &&
-    playerSelection.toLowerCase() != "scissors"
+    event.target === rockButton ||
+    event.target === paperButton ||
+    event.target === scissorsButton
   ) {
-    console.log(`${playerSelection} is not a choice.`);
-    i--;
+    playerSelection = event.target.getAttribute("id");
   }
+});
 
-  // ↓ CALLS playRound FUNCTION ↓
-
-  playRound(playerSelection, computerSelection);
-
-  // ↓ REPORTS FINAL RESULTS ↓
-
-  if (i === 5 && computerScore == playerScore) {
-    console.log(`Game over! You tied.`);
-  }
-
-  if (i === 5 && computerScore > playerScore) {
-    console.log(`Game over! You lost.`);
-  }
-
-  if (i === 5 && playerScore > computerScore) {
-    console.log(`Game over! You won!`);
-  }
+// ↓ VALIDATES INPUT ↓
+if (
+  playerSelection.toLowerCase() != "rock" &&
+  playerSelection.toLowerCase() != "paper" &&
+  playerSelection.toLowerCase() != "scissors"
+) {
+  console.log(`${playerSelection} is not a choice.`);
 }

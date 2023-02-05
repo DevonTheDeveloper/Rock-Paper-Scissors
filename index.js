@@ -34,19 +34,19 @@ function playRound(playerSelection, computerSelection) {
     roundStatus.innerText = `You tied! You both chose ${playerSelection}`;
   }
 
-  if (playerScore == 5) {
+  if (playerScore === 5) {
     roundStatus.innerText = `Game over! You won!`;
     playerScore = 0;
-    displayPlayerScore.innerText = `Your Score: ${playerScore}`;
     computerScore = 0;
+    displayPlayerScore.innerText = `Your Score: ${playerScore}`;
     displayComputerScore.innerText = `Computer Score: ${playerScore}`;
   }
 
-  if (computerScore == 5) {
+  if (computerScore === 5) {
     roundStatus.innerText = `Game over! You lost, try again.`;
     playerScore = 0;
-    displayPlayerScore.innerText = `Your Score: ${playerScore}`;
     computerScore = 0;
+    displayPlayerScore.innerText = `Your Score: ${playerScore}`;
     displayComputerScore.innerText = `Computer Score: ${playerScore}`;
   }
 }
@@ -60,7 +60,6 @@ function addContainerEventListener() {
     ) {
       let playerSelection = event.target.getAttribute("id");
       let computerSelection = getComputerChoice();
-      console.log(playerSelection, computerSelection);
       playRound(playerSelection, computerSelection);
     }
   });
@@ -77,11 +76,11 @@ const rockButton = document.createElement("button");
 const paperButton = document.createElement("button");
 const scissorsButton = document.createElement("button");
 
-rockButton.textContent = "ROCK";
+rockButton.textContent = "✊ ROCK";
 rockButton.setAttribute("id", "Rock");
-paperButton.textContent = "PAPER";
+paperButton.textContent = "🤚 PAPER";
 paperButton.setAttribute("id", "Paper");
-scissorsButton.textContent = "SCISSORS";
+scissorsButton.textContent = "✌️ SCISSORS";
 scissorsButton.setAttribute("id", "Scissors");
 title.textContent = "ROCK PAPER SCISSORS";
 title.setAttribute("id", "title");

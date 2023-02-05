@@ -34,7 +34,7 @@ function playRound(playerSelection, computerSelection) {
     roundStatus.innerText = `You tied! You both chose ${playerSelection}`;
   }
 
-  if (playerScore === 5) {
+  if (playerScore == 5) {
     roundStatus.innerText = `Game over! You won!`;
     playerScore = 0;
     displayPlayerScore.innerText = `Your Score: ${playerScore}`;
@@ -42,7 +42,7 @@ function playRound(playerSelection, computerSelection) {
     displayComputerScore.innerText = `Computer Score: ${playerScore}`;
   }
 
-  if (computerScore === 5) {
+  if (computerScore == 5) {
     roundStatus.innerText = `Game over! You lost, try again.`;
     playerScore = 0;
     displayPlayerScore.innerText = `Your Score: ${playerScore}`;
@@ -88,7 +88,9 @@ title.setAttribute("id", "title");
 roundStatus.textContent = "Pick a weapon";
 roundStatus.setAttribute("id", "roundStatus");
 displayComputerScore.innerText = `Computer Score: ${computerScore}`;
+displayComputerScore.setAttribute("id", "computerScore");
 displayPlayerScore.innerText = `Your Score: ${playerScore}`;
+displayPlayerScore.setAttribute("id", "playerScore");
 
 container.appendChild(title);
 container.appendChild(displayComputerScore);

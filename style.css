@@ -1,0 +1,33 @@
+* {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#playerScore, #computerScore {
+    display: inline-block;
+    margin: 2rem;
+}
+
+#title {
+    background: rgb(255, 0, 0);
+}
+
+#Rock, #Paper, #Scissors {
+    margin: 2.5rem;
+    padding: 0.8rem 1.4rem;
+    background-color: rgb(37, 84, 224);
+    color: white;
+    border-radius: 8px;
+    border: none;
+    transition:all 0.25s;
+    cursor: pointer;
+}
+
+#Rock:hover, #Paper:hover, #Scissors:hover {
+    background-color: rgb(40, 65, 139);
+    transform: scale(1.2);
+    font-weight: bold;
+    font-size: 24px;
+}

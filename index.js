@@ -1,43 +1,101 @@
-const container = document.querySelector("#container");
-const title = document.createElement("h1");
-const rockButton = document.createElement("button", "#rock");
-const paperButton = document.createElement("button", "#paper");
-const scissorsButton = document.createElement("button", "#scissors");
-
 let computerScore = 0;
 let playerScore = 0;
-let playerSelection = undefined;
-let computerSelection = getComputerChoice();
+
+function getComputerChoice() {
+  const choices = ["Scissors", "Paper", "Rock"];
+  let numberPicker = Math.floor(Math.random() * choices.length);
+  return choices[numberPicker];
+}
+
+// Game Logic
+
+function playRound(playerSelection, computerSelection) {
+  if (
+    (playerSelection === "Rock" && computerSelection === "Paper") ||
+    (playerSelection === "Scissors" && computerSelection === "Rock") ||
+    (playerSelection === "Paper" && computerSelection === "Scissors")
+  ) {
+    roundStatus.innerText = `You lost this round! ${computerSelection} beats ${playerSelection}`;
+    computerScore++;
+    displayComputerScore.innerText = `Computer Score: ${computerScore}`;
+  }
+
+  if (
+    (playerSelection === "Paper" && computerSelection === "Rock") ||
+    (playerSelection === "Rock" && computerSelection === "Scissors") ||
+    (playerSelection === "Scissors" && computerSelection === "Paper")
+  ) {
+    roundStatus.innerText = `You won this round! ${playerSelection} beats ${computerSelection}`;
+    playerScore++;
+    displayPlayerScore.innerText = `Your Score: ${playerScore}`;
+  }
+
+  if (playerSelection === computerSelection) {
+    roundStatus.innerText = `You tied! You both chose ${playerSelection}`;
+  }
+
+  if (playerScore === 5) {
+    roundStatus.innerText = `Game over! You won!`;
+    playerScore = 0;
+    displayPlayerScore.innerText = `Your Score: ${playerScore}`;
+    computerScore = 0;
+    displayComputerScore.innerText = `Computer Score: ${playerScore}`;
+  }
+
+  if (computerScore === 5) {
+    roundStatus.innerText = `Game over! You lost, try again.`;
+    playerScore = 0;
+    displayPlayerScore.innerText = `Your Score: ${playerScore}`;
+    computerScore = 0;
+    displayComputerScore.innerText = `Computer Score: ${playerScore}`;
+  }
+}
+
+function addContainerEventListener() {
+  container.addEventListener("click", function (event) {
+    if (
+      event.target === rockButton ||
+      event.target === paperButton ||
+      event.target === scissorsButton
+    ) {
+      let playerSelection = event.target.getAttribute("id");
+      let computerSelection = getComputerChoice();
+      console.log(playerSelection, computerSelection);
+      playRound(playerSelection, computerSelection);
+    }
+  });
+}
+
+// User Interface (UI)
+const container = document.querySelector("#container");
+const title = document.createElement("h1", "#title");
+const roundStatus = document.createElement("h2");
+const selectRoundStatus = document.querySelector("h2", "#roundStatus");
+const displayComputerScore = document.createElement("h3");
+const displayPlayerScore = document.createElement("h3");
+const rockButton = document.createElement("button");
+const paperButton = document.createElement("button");
+const scissorsButton = document.createElement("button");
 
 rockButton.textContent = "ROCK";
-rockButton.setAttribute("id", "rock");
+rockButton.setAttribute("id", "Rock");
 paperButton.textContent = "PAPER";
-paperButton.setAttribute("id", "paper");
+paperButton.setAttribute("id", "Paper");
 scissorsButton.textContent = "SCISSORS";
-scissorsButton.setAttribute("id", "scissors");
+scissorsButton.setAttribute("id", "Scissors");
+title.textContent = "ROCK PAPER SCISSORS";
+title.setAttribute("id", "title");
+roundStatus.textContent = "Pick a weapon";
+roundStatus.setAttribute("id", "roundStatus");
+displayComputerScore.innerText = `Computer Score: ${computerScore}`;
+displayPlayerScore.innerText = `Your Score: ${playerScore}`;
 
+container.appendChild(title);
+container.appendChild(displayComputerScore);
+container.appendChild(displayPlayerScore);
+container.appendChild(roundStatus);
 container.appendChild(rockButton);
 container.appendChild(paperButton);
 container.appendChild(scissorsButton);
 
-function getComputerChoice() {
-  const choices = ['rock', 'paper', 'scissors'];
-  let numberPicker = Math.floor(Math.random() * choices.length);
-  return choices[numberPicker];
-};
-
-
-// User Interface (UI)
-container.addEventListener("click", function (event) {
-  if (
-    event.target === rockButton ||
-    event.target === paperButton ||
-    event.target === scissorsButton
-  ) {
-    playerSelection = event.target.getAttribute("id");
-  }
-  for (let i = 0; i < 5;) {
-    playRound(playerSelection, computerSelection)
-      i++;
-  };
-});
+addContainerEventListener();

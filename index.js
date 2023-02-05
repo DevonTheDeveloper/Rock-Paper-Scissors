@@ -1,6 +1,8 @@
 let computerScore = 0;
 let playerScore = 0;
 
+// Computer Choice Generator
+
 function getComputerChoice() {
   const choices = ["Scissors", "Paper", "Rock"];
   let numberPicker = Math.floor(Math.random() * choices.length);
@@ -51,6 +53,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+// Player Choice Listener
 function addContainerEventListener() {
   container.addEventListener("click", function (event) {
     if (
@@ -100,3 +103,5 @@ container.appendChild(paperButton);
 container.appendChild(scissorsButton);
 
 addContainerEventListener();
+
+// Coded by DevonTheDeveloper on GitHub
